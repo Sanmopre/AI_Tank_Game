@@ -10,13 +10,13 @@ public class Steering : MonoBehaviour
 
     float turnSpeed;
     float movSpeed;
-    public Vector3 movement;
+    private Vector3 movement;
 
     public float turnAcceleration;
     public float maxTurnSpeed;
     public float acceleration;
     public float maxSpeed;
-    public Quaternion rotation;
+    private Quaternion rotation;
 
     void Update()
     {
