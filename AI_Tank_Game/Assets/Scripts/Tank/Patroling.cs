@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.AI;
+﻿using UnityEngine.AI;
 using UnityEngine;
 
 public class Patroling : MonoBehaviour
@@ -16,6 +14,7 @@ public class Patroling : MonoBehaviour
     {
         current = 0;
         checkpoint = new Vector3(checkpoints[current].x, 0, checkpoints[current].y);
+        agent.destination = checkpoint;
     }
 
     // Update is called once per frame

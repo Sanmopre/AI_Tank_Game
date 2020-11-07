@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Homing : MonoBehaviour
 {
@@ -11,7 +9,6 @@ public class Homing : MonoBehaviour
     float distance;
 
     Vector3 target;
-    bool targeting = false;
 
     Vector3 pos;
     Vector3 vel;
@@ -36,9 +33,6 @@ public class Homing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!targeting)
-            return;
-
         vel.y += gravity * Time.deltaTime;
 
         pos.x += vel.x * Time.deltaTime;
@@ -67,7 +61,5 @@ public class Homing : MonoBehaviour
         int z = Random.Range(-5, 5);
         target = tar.transform.position + tar.transform.forward.normalized * 2;
         target += new Vector3(x, 0, z);
-
-        targeting = true;
     }
 }
