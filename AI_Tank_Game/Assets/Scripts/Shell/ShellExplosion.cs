@@ -14,6 +14,7 @@ public class ShellExplosion : MonoBehaviour
     private void Start()
     {
         Destroy(gameObject, m_MaxLifeTime);
+        m_ExplosionParticles.Play();
     }
 
 

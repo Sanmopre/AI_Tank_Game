@@ -21,11 +21,10 @@ public class Shooting : MonoBehaviour
 
     private void Update()
     {
+        cannon.transform.LookAt(target);
+
         if (Vector3.Distance(target.position, transform.position) <= range)
         {
-            Vector3 targetPostition = new Vector3(target.position.x, cannon.transform.position.y, target.position.z);
-            cannon.transform.LookAt(targetPostition);
-
             if(fireTimer >= fireRate)
             {
                 fireTimer = 0.0f;
