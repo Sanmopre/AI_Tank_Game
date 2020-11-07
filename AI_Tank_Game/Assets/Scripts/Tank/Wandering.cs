@@ -19,7 +19,8 @@ public class Wandering : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(target, transform.position) <= agent.stoppingDistance)
+        float d = Vector3.Distance(target, transform.position);
+        if (Vector3.Distance(target, transform.position) <= agent.stoppingDistance + 1)
             Retarget();
     }
 
