@@ -7,6 +7,7 @@ public class TankStats : MonoBehaviour
 {
     // Start is called before the first frame update
     public int health;
+    public GameObject explosion;
 
     bool stunned = false;
 
@@ -23,7 +24,10 @@ public class TankStats : MonoBehaviour
     void Update()
     {
         if (health == 0)
+        {
+            Instantiate(explosion, transform.position, transform.rotation);
             Destroy(gameObject, 0.0f);
+        }
 
         if (stunned)
         {
