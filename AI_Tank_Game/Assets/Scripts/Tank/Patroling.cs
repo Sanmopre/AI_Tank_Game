@@ -24,7 +24,7 @@ public class Patroling : MonoBehaviour
             NextCheckpoint();
     }
 
-    void NextCheckpoint()
+    public void NextCheckpoint()
     {
         current++;
         if (current == checkpoints.Length)

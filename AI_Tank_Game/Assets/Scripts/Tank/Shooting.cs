@@ -2,7 +2,7 @@
 
 public class Shooting : MonoBehaviour
 {
-    public Transform target;
+    public GameObject target;
     public Transform cannon;
 
     public GameObject bullet;
@@ -19,22 +19,25 @@ public class Shooting : MonoBehaviour
 
     private void Update()
     {
-        cannon.transform.LookAt(target);
-
-        if (Vector3.Distance(target.position, transform.position) <= range)
+        if (target.activeSelf)
         {
-            if(fireTimer >= fireRate)
+            cannon.transform.LookAt(target.transform.position);
+
+            if (Vector3.Distance(target.transform.position, transform.position) <= range)
             {
-                fireTimer = 0.0f;
+                if (fireTimer >= fireRate)
+                {
+                    fireTimer = 0.0f;
 
-                Homing homing = Instantiate(bullet, cannon.position, cannon.rotation).GetComponent<Homing>();
-                homing.SetTarget(target.gameObject);
+                    Homing homing = Instantiate(bullet, cannon.position, cannon.rotation).GetComponent<Homing>();
+                    homing.SetTarget(target.gameObject);
+                }
+                fireTimer += Time.deltaTime;
+
+                return;
             }
-            fireTimer += Time.deltaTime;
-
-            return;
+            fireTimer = 0.0f;
         }
-        fireTimer = 0.0f;
     }
 
 }

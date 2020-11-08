@@ -22,7 +22,7 @@ public class Wandering : MonoBehaviour
             Retarget();
     }
 
-    void Retarget()
+    public void Retarget()
     {
         int x = Random.Range(-radius, radius);
         int z = Random.Range(-radius, radius);

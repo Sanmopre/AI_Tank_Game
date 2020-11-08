@@ -8,6 +8,9 @@ public class TankStats : MonoBehaviour
     // Start is called before the first frame update
     public int health;
     public GameObject explosion;
+    public GameObject h1;
+    public GameObject h2;
+    public GameObject h3;
 
     bool stunned = false;
 
@@ -17,16 +20,21 @@ public class TankStats : MonoBehaviour
 
     void Start()
     {
-
     }
 
     // Update is called once per frame
     void Update()
     {
+        HealthUI();
+
         if (health == 0)
         {
             Instantiate(explosion, transform.position, transform.rotation);
-            Destroy(gameObject, 0.0f);
+            gameObject.SetActive(false);
+
+            stunned = false;
+
+            return;
         }
 
         if (stunned)
@@ -49,5 +57,30 @@ public class TankStats : MonoBehaviour
         pos = transform.position;
         landingY = pos.y;
         vel = Vector3.up * 10;
+    }
+
+    public void Reset()
+    {
+        stunned = false;
+        health = 3;
+    }
+
+    private void HealthUI()
+    {
+        h1.SetActive(false);
+        h2.SetActive(false);
+        h3.SetActive(false);
+        if (health >= 1)
+        {
+            h1.SetActive(true);
+            if (health >= 2)
+            {
+                h2.SetActive(true);
+                if (health == 3)
+                {
+                    h3.SetActive(true);
+                }
+            }
+        }
     }
 }
